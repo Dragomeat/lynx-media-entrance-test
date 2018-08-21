@@ -1,39 +1,45 @@
 <?php
+/**
+ *  This file is part of the lynx-media-entrance-test package.
+ *
+ *  (c) Artem Prosvetov <dragomeat@dragomeat.com>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ */
 
 namespace App\Console;
 
+use App\Console\Commands\ProxiesSync;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+/**
+ * Class Kernel
+ */
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
-     *
      * @var array
      */
     protected $commands = [
-        //
+        ProxiesSync::class,
     ];
 
     /**
-     * Define the application's command schedule.
-     *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param  Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->command('proxies:sync')
+                  ->hourly();
     }
 
     /**
-     * Register the commands for the application.
-     *
      * @return void
      */
-    protected function commands()
+    protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
 
