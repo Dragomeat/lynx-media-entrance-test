@@ -15,7 +15,7 @@ namespace App\ProxyParser;
 use CommerceGuys\Enum\AbstractEnum;
 
 /**
- * Class ProxyProvider
+ * Class ProxyProvider.
  */
 class ProxyProvider extends AbstractEnum
 {

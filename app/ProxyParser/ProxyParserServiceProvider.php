@@ -17,7 +17,7 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class ProxyParserServiceProvider
+ * Class ProxyParserServiceProvider.
  */
 class ProxyParserServiceProvider extends ServiceProvider
 {

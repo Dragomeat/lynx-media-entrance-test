@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 return [
     'types' => [
-        'high' => 'High',
-        'medium' => 'Medium',
-        'low' => 'Low',
+        'high'          => 'High',
+        'medium'        => 'Medium',
+        'low'           => 'Low',
         'not_protected' => 'Not protected',
     ],
 ];
-

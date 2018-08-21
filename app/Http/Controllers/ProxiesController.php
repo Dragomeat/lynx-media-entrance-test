@@ -12,13 +12,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Transformers\ProxyTransformer;
 use App\StoredProxy;
 use Illuminate\Http\JsonResponse;
-use App\Http\Transformers\ProxyTransformer;
 use Illuminate\Http\Request;
 
 /**
- * Class ProxiesController
+ * Class ProxiesController.
  */
 class ProxiesController extends Controller
 {
@@ -29,6 +29,7 @@ class ProxiesController extends Controller
 
     /**
      * ProxiesController constructor.
+     *
      * @param ProxyTransformer $proxyTransformer
      */
     public function __construct(ProxyTransformer $proxyTransformer)
@@ -38,6 +39,7 @@ class ProxiesController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function index(Request $request): JsonResponse

@@ -21,17 +21,16 @@ declare(strict_types=1);
 
 namespace App\ProxyParser\FPL;
 
-use Traversable;
-use App\ProxyParser\Proxy;
 use App\ProxyParser\DataProvider;
 use App\ProxyParser\DomCrawler;
+use App\ProxyParser\Proxy;
 use App\ProxyParser\ProxyProvider;
 use Symfony\Component\DomCrawler\Crawler;
-
+use Traversable;
 use function call_user_func;
 
 /**
- * Class FPLDataProvider
+ * Class FPLDataProvider.
  */
 class FPLDataProvider implements DataProvider
 {
@@ -50,7 +49,8 @@ class FPLDataProvider implements DataProvider
 
     /**
      * HideMyDataProvider constructor.
-     * @param DomCrawler $crawler
+     *
+     * @param DomCrawler          $crawler
      * @param FPLProxyTransformer $proxyTransformer
      */
     public function __construct(DomCrawler $crawler, FPLProxyTransformer $proxyTransformer)
@@ -69,6 +69,7 @@ class FPLDataProvider implements DataProvider
 
     /**
      * @param int $page This provider doesn't have any pages.
+     *
      * @return Proxy[]|Traversable
      */
     public function byPage(int $page = 1): Traversable

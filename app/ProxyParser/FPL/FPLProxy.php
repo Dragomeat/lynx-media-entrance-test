@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace App\ProxyParser\FPL;
 
+use App\ProxyParser\Proxy;
 use App\ProxyParser\ProxyAnonymityType;
 use DateTimeInterface;
-use App\ProxyParser\Proxy;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
 /**
- * Class FPLProxy
+ * Class FPLProxy.
  */
 class FPLProxy implements Proxy
 {
@@ -50,24 +50,26 @@ class FPLProxy implements Proxy
 
     /**
      * @param array $values
+     *
      * @return static
      */
-    public static function fromArray(array $values): FPLProxy
+    public static function fromArray(array $values): self
     {
         foreach (['ipAddress', 'port', 'country', 'anonymityType', 'lastUpdatedAt'] as $property) {
             Assert::keyExists($values, $property);
             Assert::notEmpty($values[$property]);
         }
 
-        return new FPLProxy($values['ipAddress'], $values['port'], $values['country'], $values['anonymityType'], $values['lastUpdatedAt']);
+        return new self($values['ipAddress'], $values['port'], $values['country'], $values['anonymityType'], $values['lastUpdatedAt']);
     }
 
     /**
      * HideMyProxy constructor.
-     * @param string $ipAddress
-     * @param int $port
-     * @param string $country
-     * @param string $anonymityType
+     *
+     * @param string            $ipAddress
+     * @param int               $port
+     * @param string            $country
+     * @param string            $anonymityType
      * @param DateTimeInterface $lastUpdatedAt
      *
      * @throws InvalidArgumentException When any values are not valid.
@@ -91,9 +93,10 @@ class FPLProxy implements Proxy
 
     /**
      * @param string $ipAddress
-     * @return void
      *
      * @throws InvalidArgumentException When ip address is not valid.
+     *
+     * @return void
      */
     private function setIpAddress(string $ipAddress): void
     {
@@ -116,9 +119,10 @@ class FPLProxy implements Proxy
 
     /**
      * @param int $port
-     * @return void
      *
      * @throws InvalidArgumentException When port out of range allowed values.
+     *
+     * @return void
      */
     private function setPort(int $port): void
     {
@@ -133,7 +137,7 @@ class FPLProxy implements Proxy
      */
     public function getHost(): string
     {
-        return $this->getIpAddress() . ':' . $this->getPort();
+        return $this->getIpAddress().':'.$this->getPort();
     }
 
     /**
@@ -146,6 +150,7 @@ class FPLProxy implements Proxy
 
     /**
      * @param string $country
+     *
      * @return void
      */
     private function setCountry(string $country): void
@@ -163,9 +168,10 @@ class FPLProxy implements Proxy
 
     /**
      * @param string $anonymityType
-     * @return void
      *
      * @throws InvalidArgumentException When anonymity type is not exist.
+     *
+     * @return void
      */
     private function setAnonymityType(string $anonymityType): void
     {
@@ -184,6 +190,7 @@ class FPLProxy implements Proxy
 
     /**
      * @param DateTimeInterface $updatedAt
+     *
      * @return void
      */
     private function setLastUpdatedAt(DateTimeInterface $updatedAt): void
@@ -197,9 +204,9 @@ class FPLProxy implements Proxy
     public function toArray(): array
     {
         return [
-            'ipAddress' => $this->getIpAddress(),
-            'port' => $this->getPort(),
-            'country' => $this->getCountry(),
+            'ipAddress'     => $this->getIpAddress(),
+            'port'          => $this->getPort(),
+            'country'       => $this->getCountry(),
             'anonymityType' => $this->getAnonymityType(),
             'lastUpdatedAt' => $this->getLastUpdatedAt(),
         ];
