@@ -16,7 +16,7 @@ use App\ProxyParser\FPL\FPLDataProvider;
 use Illuminate\Contracts\Container\Container;
 
 /**
- * Class Manager
+ * Class Manager.
  */
 class Manager
 {
@@ -24,7 +24,7 @@ class Manager
      * @var array
      */
     private static $defaultProviders = [
-        FPLDataProvider::class
+        FPLDataProvider::class,
     ];
 
     /**
@@ -34,6 +34,7 @@ class Manager
 
     /**
      * Manager constructor.
+     *
      * @param Container $container
      */
     public function __construct(Container $container)
@@ -45,9 +46,10 @@ class Manager
 
     /**
      * @param DataProvider $provider
+     *
      * @return Manager
      */
-    public function add(DataProvider $provider): Manager
+    public function add(DataProvider $provider): self
     {
         $this->providers[] = $provider;
 

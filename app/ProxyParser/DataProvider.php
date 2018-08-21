@@ -15,7 +15,7 @@ namespace App\ProxyParser;
 use Traversable;
 
 /**
- * Interface DataProvider
+ * Interface DataProvider.
  */
 interface DataProvider
 {
@@ -26,6 +26,7 @@ interface DataProvider
 
     /**
      * @param int $page
+     *
      * @return Proxy[]|Traversable
      */
     public function byPage(int $page = 1): Traversable;

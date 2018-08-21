@@ -12,12 +12,12 @@ declare(strict_types=1);
 
 namespace App\ProxyParser\FPL;
 
-use DateTime;
 use Carbon\CarbonInterval;
+use DateTime;
 use DateTimeInterface;
 
 /**
- * Class FPLProxyTransformer
+ * Class FPLProxyTransformer.
  */
 class FPLProxyTransformer
 {
@@ -28,6 +28,7 @@ class FPLProxyTransformer
 
     /**
      * FPLProxyTransformer constructor.
+     *
      * @param FPLProxyAnonymityTypeConvector $anonymityTypeConvector
      */
     public function __construct(FPLProxyAnonymityTypeConvector $anonymityTypeConvector)
@@ -37,6 +38,7 @@ class FPLProxyTransformer
 
     /**
      * @param array $values
+     *
      * @return FPLProxy
      */
     public function transform(array $values): FPLProxy
@@ -48,14 +50,15 @@ class FPLProxyTransformer
 
     /**
      * @param array $values
+     *
      * @return array
      */
     protected function transformArray(array $values): array
     {
         return [
-            'ipAddress' => $this->transformIpAddress($values[0]),
-            'port' => (int) $values[1],
-            'country' => empty($values[2]) ? '--' : $values[2],
+            'ipAddress'     => $this->transformIpAddress($values[0]),
+            'port'          => (int) $values[1],
+            'country'       => empty($values[2]) ? '--' : $values[2],
             'anonymityType' => $this->transformAnonymityType($values[4]),
             'lastUpdatedAt' => $this->transformLastUpdatedAt($values[7]),
         ];
@@ -63,6 +66,7 @@ class FPLProxyTransformer
 
     /**
      * @param string $ip
+     *
      * @return string
      */
     protected function transformIpAddress(string $ip): string
@@ -72,9 +76,10 @@ class FPLProxyTransformer
 
     /**
      * @param string $type
-     * @return string
      *
      * @throws \InvalidArgumentException When type is not exists in FPLProxyAnonymityType.
+     *
+     * @return string
      */
     protected function transformAnonymityType(string $type): string
     {
@@ -83,10 +88,11 @@ class FPLProxyTransformer
 
     /**
      * @param string $lastUpdatedAt
+     *
      * @return DateTimeInterface
      */
     protected function transformLastUpdatedAt(string $lastUpdatedAt): DateTimeInterface
     {
-        return (new DateTime)->sub(CarbonInterval::fromString($lastUpdatedAt));
+        return (new DateTime())->sub(CarbonInterval::fromString($lastUpdatedAt));
     }
 }

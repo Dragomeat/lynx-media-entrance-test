@@ -17,7 +17,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * Class DomCrawler
+ * Class DomCrawler.
  */
 class DomCrawler
 {
@@ -28,6 +28,7 @@ class DomCrawler
 
     /**
      * DomCrawler constructor.
+     *
      * @param ClientInterface $client
      */
     public function __construct(ClientInterface $client)
@@ -37,6 +38,7 @@ class DomCrawler
 
     /**
      * @param string $uri
+     *
      * @return Crawler
      */
     public function parse(string $uri): Crawler
@@ -48,6 +50,7 @@ class DomCrawler
 
     /**
      * @param string $uri
+     *
      * @return string
      */
     protected function request(string $uri): string

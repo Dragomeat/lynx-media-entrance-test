@@ -21,19 +21,19 @@ declare(strict_types=1);
 
 namespace App;
 
-use DateTimeInterface;
 use App\ProxyParser\Proxy;
-use Webmozart\Assert\Assert;
-use InvalidArgumentException;
-use App\ProxyParser\ProxyProvider;
 use App\ProxyParser\ProxyAnonymityType;
-use Illuminate\Database\Eloquent\Model;
+use App\ProxyParser\ProxyProvider;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
+use Webmozart\Assert\Assert;
 
 /**
- * Class StoredProxy
+ * Class StoredProxy.
  *
- * @property integer $id
+ * @property int $id
  * @property string $provider
  * @property string $ipAddress
  * @property int $port
@@ -49,7 +49,7 @@ class StoredProxy extends Model implements Proxy
      * @var array
      */
     protected $fillable = [
-        'provider', 'ipAddress', 'port', 'country', 'anonymityType', 'lastUpdatedAt'
+        'provider', 'ipAddress', 'port', 'country', 'anonymityType', 'lastUpdatedAt',
     ];
 
     /**
@@ -63,9 +63,10 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param array $values
+     *
      * @return static
      */
-    public static function fromArray(array $values): StoredProxy
+    public static function fromArray(array $values): self
     {
         foreach (['provider', 'ipAddress', 'port', 'country', 'anonymityType', 'lastUpdatedAt'] as $property) {
             Assert::keyExists($values, $property);
@@ -77,10 +78,11 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param Builder $builder
-     * @param string $anonymityType
-     * @return Builder
+     * @param string  $anonymityType
      *
      * @throws InvalidArgumentException When anonymity type is not exists.
+     *
+     * @return Builder
      */
     public function scopeOfAnonymityType(Builder $builder, string $anonymityType): Builder
     {
@@ -99,9 +101,10 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param string $provider
-     * @return void
      *
      * @throws InvalidArgumentException When provide is not exist
+     *
+     * @return void
      */
     public function setProviderAttribute(string $provider): void
     {
@@ -120,9 +123,10 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param string $ipAddress
-     * @return void
      *
      * @throws InvalidArgumentException When ip address is not valid.
+     *
+     * @return void
      */
     public function setIpAddressAttribute(string $ipAddress): void
     {
@@ -145,9 +149,10 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param int $port
-     * @return void
      *
      * @throws InvalidArgumentException When port out of range allowed values.
+     *
+     * @return void
      */
     public function setPortAttribute(int $port): void
     {
@@ -162,7 +167,7 @@ class StoredProxy extends Model implements Proxy
      */
     public function getHost(): string
     {
-        return $this->getIpAddress() . ':' . $this->getPort();
+        return $this->getIpAddress().':'.$this->getPort();
     }
 
     /**
@@ -175,6 +180,7 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param string $country
+     *
      * @return void
      */
     public function setCountryAttribute(string $country): void
@@ -192,9 +198,10 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param string $anonymityType
-     * @return void
      *
      * @throws InvalidArgumentException When anonymity type is not exist.
+     *
+     * @return void
      */
     public function setAnonymityTypeAttribute(string $anonymityType): void
     {
@@ -213,6 +220,7 @@ class StoredProxy extends Model implements Proxy
 
     /**
      * @param DateTimeInterface $lastUpdatedAt
+     *
      * @return void
      */
     public function setLastUpdatedAtAttribute(DateTimeInterface $lastUpdatedAt): void
@@ -226,10 +234,10 @@ class StoredProxy extends Model implements Proxy
     public function toArray(): array
     {
         return [
-            'provider' => $this->getProvider(),
-            'ipAddress' => $this->getIpAddress(),
-            'port' => $this->getPort(),
-            'country' => $this->getCountry(),
+            'provider'      => $this->getProvider(),
+            'ipAddress'     => $this->getIpAddress(),
+            'port'          => $this->getPort(),
+            'country'       => $this->getCountry(),
             'anonymityType' => $this->getAnonymityType(),
             'lastUpdatedAt' => $this->getLastUpdatedAt(),
         ];

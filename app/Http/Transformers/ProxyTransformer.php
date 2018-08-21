@@ -13,11 +13,11 @@ declare(strict_types=1);
 namespace App\Http\Transformers;
 
 use App\ProxyParser\Proxy;
-use League\Fractal\TransformerAbstract;
 use App\ProxyParser\ProxyAnonymityTypeTranslator;
+use League\Fractal\TransformerAbstract;
 
 /**
- * Class ProxyTransformer
+ * Class ProxyTransformer.
  */
 class ProxyTransformer extends TransformerAbstract
 {
@@ -28,6 +28,7 @@ class ProxyTransformer extends TransformerAbstract
 
     /**
      * ProxyTransformer constructor.
+     *
      * @param ProxyAnonymityTypeTranslator $translator
      */
     public function __construct(ProxyAnonymityTypeTranslator $translator)
@@ -37,13 +38,14 @@ class ProxyTransformer extends TransformerAbstract
 
     /**
      * @param Proxy $proxy
+     *
      * @return array
      */
     public function transform(Proxy $proxy): array
     {
         return [
-            'host' => $proxy->getHost(),
-            'country' => $proxy->getCountry(),
+            'host'          => $proxy->getHost(),
+            'country'       => $proxy->getCountry(),
             'anonymityType' => $this->translator->translate($proxy->getAnonymityType()),
             'lastUpdatedAt' => (string) $proxy->getLastUpdatedAt(),
         ];

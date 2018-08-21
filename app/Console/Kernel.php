@@ -15,7 +15,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 /**
- * Class Kernel
+ * Class Kernel.
  */
 class Kernel extends ConsoleKernel
 {
@@ -27,12 +27,13 @@ class Kernel extends ConsoleKernel
     ];
 
     /**
-     * @param  Schedule  $schedule
+     * @param Schedule $schedule
+     *
      * @return void
      */
     protected function schedule(Schedule $schedule): void
     {
-         $schedule->command('proxies:sync')
+        $schedule->command('proxies:sync')
                   ->hourly();
     }
 

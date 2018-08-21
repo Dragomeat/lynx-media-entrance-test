@@ -10,15 +10,15 @@
 
 namespace App\Console\Commands;
 
+use App\ProxyParser\Parser;
 use App\ProxyParser\Proxy;
 use App\StoredProxy;
-use App\ProxyParser\Parser;
-use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 /**
- * Class ProxiesSync
+ * Class ProxiesSync.
  */
 class ProxiesSync extends Command
 {
@@ -39,6 +39,7 @@ class ProxiesSync extends Command
 
     /**
      * ProxiesSync constructor.
+     *
      * @param Parser $parser
      */
     public function __construct(Parser $parser)
@@ -81,7 +82,8 @@ class ProxiesSync extends Command
 
     /**
      * @param Collection|StoredProxy[] $collection
-     * @param Proxy $proxy
+     * @param Proxy                    $proxy
+     *
      * @return StoredProxy|null
      */
     protected function findSaveForProxy(Collection $collection, Proxy $proxy): ?StoredProxy

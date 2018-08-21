@@ -12,12 +12,12 @@ declare(strict_types=1);
 
 namespace App\ProxyParser;
 
-use Webmozart\Assert\Assert;
-use InvalidArgumentException;
 use Illuminate\Contracts\Translation\Translator;
+use InvalidArgumentException;
+use Webmozart\Assert\Assert;
 
 /**
- * Class ProxyAnonymityTypeTranslator
+ * Class ProxyAnonymityTypeTranslator.
  */
 class ProxyAnonymityTypeTranslator
 {
@@ -25,9 +25,9 @@ class ProxyAnonymityTypeTranslator
      * @var array
      */
     public static $translations = [
-        ProxyAnonymityType::HIGH => 'proxies.types.high',
-        ProxyAnonymityType::MEDIUM => 'proxies.types.medium',
-        ProxyAnonymityType::LOW => 'proxies.types.low',
+        ProxyAnonymityType::HIGH          => 'proxies.types.high',
+        ProxyAnonymityType::MEDIUM        => 'proxies.types.medium',
+        ProxyAnonymityType::LOW           => 'proxies.types.low',
         ProxyAnonymityType::NOT_PROTECTED => 'proxies.types.not_protected',
     ];
 
@@ -38,6 +38,7 @@ class ProxyAnonymityTypeTranslator
 
     /**
      * ProxyAnonymityTypeTranslator constructor.
+     *
      * @param Translator $translator
      */
     public function __construct(Translator $translator)
@@ -47,9 +48,10 @@ class ProxyAnonymityTypeTranslator
 
     /**
      * @param string $anonymityType
-     * @return string
      *
      * @throws InvalidArgumentException When anonymity type is not exists or no translations found.
+     *
+     * @return string
      */
     public function translate(string $anonymityType): string
     {

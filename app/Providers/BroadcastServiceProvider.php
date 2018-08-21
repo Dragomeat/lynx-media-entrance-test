@@ -12,11 +12,11 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Support\ServiceProvider;
 
 /**
- * Class BroadcastServiceProvider
+ * Class BroadcastServiceProvider.
  */
 class BroadcastServiceProvider extends ServiceProvider
 {

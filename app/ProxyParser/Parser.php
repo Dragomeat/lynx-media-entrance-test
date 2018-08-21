@@ -15,7 +15,7 @@ namespace App\ProxyParser;
 use Traversable;
 
 /**
- * Class Parser
+ * Class Parser.
  */
 class Parser
 {
@@ -26,6 +26,7 @@ class Parser
 
     /**
      * Parser constructor.
+     *
      * @param Manager $manager
      */
     public function __construct(Manager $manager)

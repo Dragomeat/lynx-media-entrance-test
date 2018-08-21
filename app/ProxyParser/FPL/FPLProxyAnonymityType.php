@@ -15,7 +15,7 @@ namespace App\ProxyParser\FPL;
 use CommerceGuys\Enum\AbstractEnum;
 
 /**
- * Class FPLProxyAnonymityType
+ * Class FPLProxyAnonymityType.
  */
 class FPLProxyAnonymityType extends AbstractEnum
 {

@@ -15,7 +15,7 @@ namespace App\ProxyParser;
 use DateTimeInterface;
 
 /**
- * Interface Proxy
+ * Interface Proxy.
  */
 interface Proxy
 {

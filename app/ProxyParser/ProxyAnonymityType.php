@@ -15,7 +15,7 @@ namespace App\ProxyParser;
 use CommerceGuys\Enum\AbstractEnum;
 
 /**
- * Class ProxyAnonymityType
+ * Class ProxyAnonymityType.
  */
 class ProxyAnonymityType extends AbstractEnum
 {
